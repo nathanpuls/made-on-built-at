@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A collection of little moments, big smiles, and beautiful family memories.">
+  <title>The Good Stuff | Family Memories</title>
+  
+
+  <style>
+    :root {
+      --background: #f5f3ed;
+      --paper: #ffffff;
+      --heading: #253e35;
+      --text: #647168;
+      --accent: #a58b58;
+
+      --font-heading: Georgia, 'Times New Roman', serif;
+      --font-body: Arial, sans-serif;
+
+      --page-width: 1100px;
+      --page-padding: clamp(20px, 5vw, 64px);
+      --section-spacing: clamp(40px, 7vw, 90px);
+      --photo-gap: 16px;
+      --photo-border: 7px;
+      --photo-radius: 3px;
+      --heading-size: clamp(48px, 9vw, 100px);
+      --shadow: 0 8px 30px #253e3510;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: var(--page-width);
+      margin: auto;
+      padding: var(--page-padding);
+    }
+
+    .header {
+      text-align: center;
+      padding: var(--section-spacing) 0;
+    }
+
+    .eyebrow {
+      margin: 0 0 20px;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+    }
+
+    .heading {
+      margin: 0;
+      color: var(--heading);
+      font-family: var(--font-heading);
+      font-size: var(--heading-size);
+      font-weight: 400;
+      letter-spacing: -0.06em;
+      line-height: 1.05;
+    }
+
+    .subtitle {
+      margin: 24px auto 0;
+      font-family: var(--font-heading);
+      font-size: clamp(17px, 2.5vw, 22px);
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    .ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin: 28px auto 0;
+    }
+
+    .ornament-line {
+      width: 45px;
+      height: 1px;
+      background: color-mix(in srgb, var(--accent) 55%, transparent);
+    }
+
+    .ornament-icon {
+      width: 24px;
+      height: 24px;
+      color: var(--accent);
+    }
+
+    .collage {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: var(--photo-gap);
+      align-items: start;
+    }
+
+    .photo-card {
+      margin: 0;
+      padding: var(--photo-border);
+      background: var(--paper);
+      border-radius: var(--photo-radius);
+      box-shadow: var(--shadow);
+    }
+
+    .photo-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--photo-radius);
+    }
+
+    .photo-one {
+      grid-column: 1 / 6;
+      grid-row: 1 / 3;
+      transform: rotate(-2deg);
+    }
+
+    .photo-two {
+      grid-column: 6 / 13;
+      grid-row: 1;
+      margin-top: 25px;
+      transform: rotate(1.5deg);
+    }
+
+    .photo-three {
+      grid-column: 1 / 8;
+      grid-row: 3;
+      margin-top: 10px;
+      transform: rotate(1deg);
+    }
+
+    .photo-four {
+      grid-column: 8 / 13;
+      grid-row: 2 / 4;
+      margin-top: 12px;
+      transform: rotate(-2deg);
+    }
+
+    .closing {
+      text-align: center;
+      padding: var(--section-spacing) 0 25px;
+    }
+
+    .closing-label {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .closing-heading {
+      margin: 0;
+      color: var(--heading);
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 400;
+      letter-spacing: -1.5px;
+    }
+
+    .closing-description {
+      margin: 16px auto 0;
+      max-width: 420px;
+      font-family: var(--font-heading);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .footer {
+      padding: 30px 0 10px;
+      text-align: center;
+    }
+
+    .footer-text {
+      margin: 0;
+      color: var(--accent);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 600px) {
+      :root {
+        --photo-gap: 12px;
+        --photo-border: 4px;
+      }
+
+      .header {
+        padding-top: 35px;
+      }
+
+      .collage {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .photo-one {
+        grid-column: 1;
+        grid-row: 2;
+        margin-top: 0;
+      }
+
+      .photo-two {
+        grid-column: 1 / -1;
+        grid-row: 1;
+        margin-top: 0;
+      }
+
+      .photo-three {
+        grid-column: 1 / -1;
+        grid-row: 3;
+        margin-top: 0;
+      }
+
+      .photo-four {
+        grid-column: 2;
+        grid-row: 2;
+        margin-top: 0;
+        transform: rotate(2deg);
+      }
+
+      .eyebrow {
+        letter-spacing: 3px;
+      }
+    }
+  </style>
+<link id="ie-google-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap"></head>
+
+<body style="padding: 100px; background-color: rgb(255, 255, 255) !important;">
+  <main class="page" data-edit="Family memories page">
+
+    <header class="header" data-edit="Page header" style="padding: 86px !important; background-color: rgb(7, 214, 180) !important; border-radius: 100px !important; color: rgb(68, 200, 109) !important;">
+
+      
+
+      <h1 class="heading" data-edit="Main heading" style="font-family: Manrope, sans-serif !important; font-weight: 700 !important; color: rgb(255, 255, 255) !important; font-size: 72px !important;">Hello</h1>
+
+      
+
+      <div class="ornament" data-edit="Header ornament">
+        
+
+        
+
+        
+      </div>
+
+    </header>
+
+    <section class="collage" data-edit="Family photo collage" aria-label="Family photographs">
+
+      
+
+      
+
+      
+
+      
+
+    </section>
+
+    
+
+    <footer class="footer" data-edit="Page footer">
+      
+    </footer>
+
+  </main>
+
+</body></html>
