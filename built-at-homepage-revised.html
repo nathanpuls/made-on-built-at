@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Built.at — Build with AI. Make it yours.</title>
+<link rel="canonical" href="https://built.at/">
+<meta name="description" content="Create with AI, customize in your browser, and take your code anywhere. A free visual HTML editor.">
+<link rel="icon" href="https://built.at/_brand/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap">
+  <style>
+    :root {
+      --page-background: #fff;
+      --surface: #ffffff;
+      --text: #202020;
+      --muted: #737373;
+      --accent: #202020;
+      --button-text: #ffffff;
+      --icon-color: #404040;
+      --border: color-mix(in srgb, var(--text) 12%, transparent);
+      --font: Manrope, system-ui, sans-serif;
+      --content-width: 720px;
+      --radius: 12px;
+      --spacing: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--page-background);
+      color: var(--text);
+      font-family: var(--font);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: min(var(--content-width), calc(100% - 40px));
+      margin: auto;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 26px 0;
+    }
+
+    .logo {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .hero {
+      padding: 30px 0 32px;
+    }
+
+    .headline {
+      margin: 0 0 14px;
+      font-size: clamp(34px, 6vw, 50px);
+      font-weight: 750;
+      letter-spacing: -2px;
+      line-height: 1.16;
+    }
+
+    .description {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .creator {
+      margin-top: 32px;
+    }
+
+    .field-label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .brief-input {
+      display: block;
+      width: 100%;
+      min-height: 136px;
+      padding: 18px;
+      resize: vertical;
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font: inherit;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .brief-input::placeholder {
+      color: var(--muted);
+    }
+
+    .brief-input:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: var(--spacing);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 12px 17px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: var(--surface);
+      color: var(--text);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 150ms;
+    }
+
+    .button:hover {
+      background: color-mix(in srgb, var(--text) 5%, var(--surface));
+    }
+
+    .button-primary {
+      background: var(--accent);
+      color: var(--button-text);
+      border-color: var(--accent);
+    }
+
+    .button-primary:hover {
+      background: color-mix(in srgb, var(--accent) 86%, var(--surface));
+    }
+
+    .button-icon {
+      width: 17px;
+      height: 17px;
+      color: var(--icon-color);
+      flex-shrink: 0;
+    }
+
+    .primary-icon {
+      color: var(--button-text);
+    }
+
+    .section {
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-title {
+      margin: 0 0 8px;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -.6px;
+    }
+
+    .section-description {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .examples-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--spacing);
+    }
+
+    .example-card {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      min-width: 0;
+      padding: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .example-icon {
+      width: 23px;
+      height: 23px;
+      color: var(--icon-color);
+      flex-shrink: 0;
+    }
+
+    .example-name {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 650;
+    }
+
+    .example-description {
+      flex: 1;
+      margin: -5px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .example-button {
+      width: 100%;
+      padding: 8px 10px;
+      font-size: 12px;
+    }
+
+    .example-button-icon {
+      width: 14px;
+      height: 14px;
+      color: var(--icon-color);
+    }
+
+    .about-text {
+      max-width: 570px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 26px 0 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-text {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-link {
+      color: var(--muted);
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding-top: 22px;
+      }
+
+      .examples-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .example-card {
+        padding: 16px;
+      }
+
+      .actions .button {
+        flex: 1 1 auto;
+      }
+
+      .nav {
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 340px) {
+      .examples-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+<style>
+.logo{display:inline-flex;align-items:center;gap:9px}
+.logo img{display:block;flex:none}
+.headline span{display:block}
+.actions{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.split-button{display:inline-flex;position:relative;align-items:stretch}
+.split-button .split-main{border-radius:9px 0 0 9px;border-right:0;background:var(--accent);color:var(--button-text)}
+.split-button .split-arrow{border-radius:0 9px 9px 0;padding-inline:12px;background:var(--accent);color:var(--button-text);border-left:1px solid color-mix(in srgb,var(--button-text) 25%,transparent)}
+.split-button .split-main:hover,.split-button .split-arrow:hover{background:color-mix(in srgb,var(--accent) 86%,var(--surface))}
+.split-button .button-icon{color:var(--button-text)}
+.split-menu{position:absolute;z-index:20;top:calc(100% + 6px);right:0;min-width:180px;padding:5px;border:1px solid var(--border);border-radius:9px;background:var(--surface);box-shadow:0 8px 24px #00000015}
+.split-menu[hidden]{display:none}
+.split-menu .button{width:100%;justify-content:flex-start;border:0;background:transparent;color:var(--text)}
+.split-menu .button:hover{background:color-mix(in srgb,var(--text) 5%,var(--surface))}
+.split-menu .button-icon{color:var(--icon-color)}
+.actions .editor-link{margin:0}
+#prompt-copy-fallback:not([hidden]){margin-top:12px}
+#prompt-copy-fallback[hidden]{display:none}
+@media(max-width:600px){.actions .button{flex:none}}
+</style>
+
+<script>
+if (!new URLSearchParams(location.search).has('edit')) {
+  const startClosed = new MutationObserver(() => {
+    const close = document.getElementById('ie-close');
+    const resume = document.getElementById('ie-resume');
+    if (!close || !resume) return;
+    startClosed.disconnect();
+    if (!document.body.classList.contains('ie-preview')) close.click();
+  });
+  startClosed.observe(document.documentElement,{childList:true,subtree:true});
+}
+</script>
+
+<meta name="built-workspace-github" content="enabled"><script src="https://edit.built.at" defer="" data-built-at-preview=""></script></head>
+<body style="border-radius: 0px !important;">
+  <div class="container">
+
+    <header class="header" data-edit="Header">
+      <a class="logo" href="/" data-edit="Built.at home link"><img src="https://built.at/_brand/logo.svg" width="27" height="27" alt="" data-edit="Built.at logo"><span data-edit="Built.at name">Built.at</span></a>
+
+      
+    </header>
+
+    <main>
+
+      <section class="hero" data-edit="Create section" style="border-radius: 0px !important;">
+        <h1 class="headline" data-edit="Main headline" style="color:#000;font-weight:700;font-size:32px"><span data-edit="Ask step">Ask for a website</span><span data-edit="Build step">Bring your HTML</span><span data-edit="Customize step">Customize visually</span></h1>
+
+        
+
+        <div class="creator" data-edit="Prompt creator">
+          <label class="field-label" for="brief" data-edit="Website brief label" style="font-size: 18px !important; font-weight: 400 !important;">What do you want to build?</label>
+
+          <textarea class="brief-input" id="brief" data-edit="Website brief" placeholder=""></textarea>
+
+          <div class="actions" data-edit="Creation actions">
+            <div class="split-button" data-edit="Prompt actions">
+              <button class="button split-main" type="button" data-edit="ChatGPT button" onclick="openChatGPT()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-up-right" class="lucide lucide-arrow-up-right button-icon" data-edit="ChatGPT arrow icon" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                <span data-edit="ChatGPT button text">Ask ChatGPT</span>
+              </button>
+              <button class="button split-arrow" type="button" data-edit="Prompt menu toggle" aria-label="More prompt options" aria-haspopup="true" aria-expanded="false" aria-controls="prompt-menu" onclick="togglePromptMenu(this)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down button-icon" data-edit="Prompt menu arrow icon" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+              </button>
+              <div class="split-menu" id="prompt-menu" data-edit="Prompt options menu" hidden>
+                <button class="button" type="button" data-edit="Copy prompt button" onclick="copyPrompt(this)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="copy" class="lucide lucide-copy button-icon" data-edit="Copy prompt icon" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                  <span data-edit="Copy prompt text">Copy prompt</span>
+                </button>
+              </div>
+            </div>
+
+            <button class="button editor-link" type="button" id="built-paste-website" data-edit="Editor link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="clipboard-paste" class="lucide lucide-clipboard-paste button-icon" data-edit="Paste HTML icon" aria-hidden="true"><path d="M11 14h10"></path><path d="M16 4h2a2 2 0 0 1 2 2v1.344"></path><path d="m17 18 4-4-4-4"></path><path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 1.793-1.113"></path><rect x="8" y="2" width="8" height="4" rx="1"></rect></svg>
+              <span data-edit="Editor link text">Paste HTML</span>
+            </button>
+          </div>
+          
+          
+          <textarea id="prompt-copy-fallback" class="brief-input" aria-label="Prompt ready to copy" readonly="" hidden=""></textarea>
+        </div>
+      </section>
+
+      
+
+      <section class="section" id="about" data-edit="About section" style="border-color: rgba(38, 38, 38, 0.12) !important; border-style: none !important;">
+        
+
+        <p class="about-text" data-edit="About description">Built.at is a free, visual HTML editor. Create with your favorite AI, edit in your browser, and take your code anywhere. No coding. No accounts. No subscriptions.</p>
+      </section>
+
+    </main>
+
+    
+
+  </div>
+
+  <script>
+    const promptTemplate = `Create a responsive, single-page HTML website based on the brief below.
+
+WEBSITE BRIEF:
+{{BRIEF}}
+
+REQUIREMENTS:
+
+1. Begin with <!DOCTYPE html>. Include charset, viewport, a meaningful title and meta description. Use inline CSS, minimal JavaScript, no frameworks, and <script src="https://edit.built.at" defer><\/script> in the head.
+
+2. Give every meaningful visible element a unique, descriptive data-edit attribute. Name parent components and their children independently. Keep editable text on leaf elements. Never use data-label or data-section.
+
+3. Use semantic HTML and ordinary CSS classes. Keep reorderable sections, repeated cards, and list items as siblings. Give each repeatable item one outer element containing its contents.
+
+4. Use data-edit-group for genuinely equivalent elements that should share styles. Every member must still have a unique data-edit label.
+
+5. Define reusable CSS variables on :root for colors, typography, spacing, and dimensions. Keep independently adjustable colors separate. Use color-mix() for related shades. Avoid global button, input, and SVG styles. Use .button for button-style links and buttons.
+
+6. Prefer real inline Lucide SVG icons with valid data-lucide names, actual paths, viewBox, and independent data-edit labels. Use currentColor for strokes or fills. Give icons independent CSS color, width, and height. Keep adjacent text in a separate editable span.
+
+7. Use accessible, responsive HTML. Include real labels for form fields, useful placeholders, meaningful image alt text, and absolute HTTPS image URLs.
+
+8. Do not recreate editor controls, selection, undo, redo, export, drag handles, or icon replacement. The Built.at script handles these.
+
+Keep the result proportional to the brief.
+
+Verify unique data-edit labels, independent parent and child selection, real icon paths, valid nesting, consistent repeated-item structures, and shared CSS variables.
+
+Return only the complete HTML document in one code block. No explanations.`;
+
+    function getPrompt() {
+      const brief = document.getElementById('brief').value.trim();
+      return promptTemplate.replace(
+        '{{BRIEF}}',
+        brief || 'A simple personal website.'
+      );
+    }
+
+    function closePromptMenu() {
+      document.getElementById('prompt-menu').hidden = true;
+      document.querySelector('.split-arrow').setAttribute('aria-expanded', 'false');
+    }
+
+    function togglePromptMenu(button) {
+      const menu = document.getElementById('prompt-menu');
+      menu.hidden = !menu.hidden;
+      button.setAttribute('aria-expanded', String(!menu.hidden));
+      if (!menu.hidden) menu.querySelector('button').focus();
+    }
+
+    document.addEventListener('click', event => {
+      if (!event.target.closest('.split-button')) closePromptMenu();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') closePromptMenu();
+    });
+
+    async function copyPrompt(button) {
+      const label = button.querySelector('span');
+      const original = label.textContent;
+
+      const prompt = getPrompt();
+      closePromptMenu();
+      try {
+        await navigator.clipboard.writeText(prompt);
+        label.textContent = 'Copied!';
+      } catch {
+        const field = document.getElementById('prompt-copy-fallback');
+        field.hidden = false;
+        field.value = prompt;
+        field.focus();
+        field.select();
+        if (document.execCommand('copy')) {
+          field.hidden = true;
+          button.focus();
+          label.textContent = 'Copied!';
+        } else {
+          label.textContent = 'Select and copy below';
+        }
+      }
+
+      setTimeout(() => {
+        label.textContent = original;
+      }, 1500);
+    }
+
+    function openChatGPT() {
+      const url = 'https://chatgpt.com/?q=' +
+        encodeURIComponent(getPrompt());
+
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+
+    function useExample(brief) {
+      const input = document.getElementById('brief');
+      input.value = brief;
+      input.focus({ preventScroll: true });
+      input.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+<div class="calendly-frame-tag" manager_id="3cfae18e-e755-4785-8ae3-c98beb6cc544" id="3cfae18e-e755-4785-8ae3-c98beb6cc544" style="height: 0px; width: 0px; visibility: hidden;"></div><div class="calendly-lifecycle-optibutton_singleton"></div></body></html>
