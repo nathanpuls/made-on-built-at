@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hey</title>
+  <meta name="description" content="A clean, minimalist single-page greeting that simply says Hey.">
+  
+  <style>
+    :root {
+      --bg-page: #fafafa;
+      --bg-surface: #ffffff;
+      --text-primary: #111827;
+      --border-subtle: color-mix(in srgb, var(--text-primary) 8%, transparent);
+      --shadow-surface: 0 12px 32px -8px color-mix(in srgb, var(--text-primary) 6%, transparent);
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --text-hero: clamp(3.5rem, 12vw, 7rem);
+      --space-page: clamp(1.5rem, 5vw, 3rem);
+      --space-card: clamp(2.5rem, 8vw, 5rem);
+      --radius-card: 1.5rem;
+      --max-width-card: 36rem;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
+      padding: var(--space-page);
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .greeting-main {
+      width: 100%;
+      max-width: var(--max-width-card);
+      display: flex;
+      justify-content: center;
+    }
+
+    .greeting-card {
+      width: 100%;
+      padding: var(--space-card);
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-surface);
+      text-align: center;
+    }
+
+    .greeting-heading {
+      font-size: var(--text-hero);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      color: var(--text-primary);
+    }
+  </style>
+</head>
+<body style="background-color: rgb(17, 84, 226) !important;">
+  <main class="greeting-main" data-edit="Greeting Layout">
+    <section class="greeting-card" data-edit="Greeting Card" style="padding: 0px !important; border-radius: 0px !important; background-color: rgb(255, 197, 197) !important;">
+      <h1 class="greeting-heading" data-edit="Greeting Text" style="color: rgb(17, 84, 226) !important;">Hey.</h1>
+    </section>
+  </main>
+
+</body></html>
