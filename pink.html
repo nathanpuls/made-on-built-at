@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The simplest website ever.">
+  <title>The Simplest Website Ever</title>
+  
+  <style>
+    :root {
+      --background: #ffffff;
+      --text: #171717;
+      --muted: #777777;
+      --font: system-ui, sans-serif;
+      --spacing: 20px;
+      --content-width: 600px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: var(--font);
+    }
+
+    .page {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: var(--spacing);
+    }
+
+    .content {
+      width: 100%;
+      max-width: var(--content-width);
+      text-align: center;
+    }
+
+    .heading {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+    }
+
+    .description {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <main class="page" data-edit="page" style="background-color: rgb(206, 119, 161) !important; font-size: 55px !important;">
+    <section class="content" data-edit="main-content">
+      <p class="description" data-edit="description" style="font-size: 51px !important; color: rgb(0, 0, 0) !important; font-weight: 700 !important; background-color: rgb(106, 228, 220) !important; border-radius: 90px !important;">
+        This is the simplest website ever.
+      </p><h1 class="heading" data-edit="heading" style="color: rgb(255, 255, 255) !important; font-size: 61px !important; padding: 70px !important;">Hellllllllo.</h1>
+      
+    </section>
+  </main>
+
+</body></html>
